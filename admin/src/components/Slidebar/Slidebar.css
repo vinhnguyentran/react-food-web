@@ -28,7 +28,7 @@
 }
 
 .slidebar-option.active{
-    background-color: tomato;
+    background-color: rgb(37, 209, 252);
     border-color: #a9a9a9;
 }
 

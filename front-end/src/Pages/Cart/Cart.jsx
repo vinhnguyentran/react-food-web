@@ -3,8 +3,9 @@ import './Cart.css';
 
 import { StoreContext } from './../../context/StoreContext';
 import { useNavigate } from 'react-router-dom';
+import { assets } from '../../assets/assets';
 const Cart = () => {
-  const {cartItem, food_list, removeCartItem, getTotalCartAmount,url} = useContext(StoreContext)
+  const {cartItem, food_list, removeCartItem, getTotalCartAmount,url,addToCart,deleteCartItem} = useContext(StoreContext)
   const navigate = useNavigate()
   return (
     <div className='cart' >
@@ -26,9 +27,12 @@ const Cart = () => {
                 <img src={url + '/images/' + item.image} alt=''/>
                 <p>{item.name}</p>
                 <p>${item.price}</p>
-                <p>{cartItem[item._id]}</p>
+                <p>
+                  <img className='quantity-icon' src={assets.add_icon_green} onClick={()=> addToCart(item._id)}/>
+                  {cartItem[item._id]} 
+                  <img  className='quantity-icon' src={assets.remove_icon_red} onClick={() => removeCartItem(item._id)}/></p>
                 <p>${item.price*cartItem[item._id]}</p>
-                <p onClick={() => removeCartItem(item._id)} className='cross'>x</p>
+                <p onClick={() => deleteCartItem(item._id)} className='cross'><img className='quantity-icon' src={assets.delete_icon} alt='' /></p>
               </div>
             )
           }
@@ -40,17 +44,17 @@ const Cart = () => {
           <div>
             <div className="cart-total-detail">
               <p>Subtotal</p>
-              <p>{getTotalCartAmount()}</p>
+              <p>$ {getTotalCartAmount()}</p>
             </div>
             <hr/>
             <div className="cart-total-detail">
               <p>Delivery Free</p>
-              <p>{getTotalCartAmount()===0?0:2}</p>
+              <p>$ {getTotalCartAmount()===0?0:2}</p>
             </div>
             <hr/>
-            <div className="cart-total-details">
+            <div className="cart-total-detail">
               <p>Total</p>
-              <p>{getTotalCartAmount()===0?0:getTotalCartAmount()+2}</p>
+              <p>$ {getTotalCartAmount()===0?0:getTotalCartAmount()+2}</p>
             </div>
           </div>
           <button onClick={() => navigate('/place')}>PROCEED TO CHECKOUT</button>

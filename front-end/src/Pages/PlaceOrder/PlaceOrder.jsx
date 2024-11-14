@@ -1,26 +1,17 @@
 import React, { useContext, useState } from 'react'
 import './PlaceOrder.css'
 import { StoreContext } from '../../context/StoreContext'
+import { useNavigate } from 'react-router-dom'
 const PlaceOrder = () => {
-  const {getTotalCartAmount} = useContext(StoreContext)
-  const [orderData, setOrderData] = useState({
-    first_name: '',
-    last_name: '',
-    email: '',
-    street: '',
-    city: '',
-    state: '',
-    zip_code: '',
-    country: '',
-    phone: ''
-  })
+  const {getTotalCartAmount, orderData,setOrderData} = useContext(StoreContext)
+  const navigate = useNavigate()
   const onChangeHandle = (e) => {
     const name = e.target.name;
     const value = e.target.value;
-    setData(data => ({...data, [name]: value}))
+    setOrderData(data => ({...data, [name]: value}))
  }
   const submitOrder = () => {
-    console.log('test orderdata', orderData);
+    navigate('/payment')
   }
   return (
     <form className='place-order' onSubmit={submitOrder}>
@@ -48,20 +39,20 @@ const PlaceOrder = () => {
           <div>
           <div className="cart-total-detail">
               <p>Subtotal</p>
-              <p>{getTotalCartAmount()}</p>
+              <p>${getTotalCartAmount()}</p>
             </div>
             <hr/>
             <div className="cart-total-detail">
               <p>Delivery Free</p>
-              <p>{getTotalCartAmount()===0?0:2}</p>
+              <p>${getTotalCartAmount()===0?0:2}</p>
             </div>
             <hr/>
-            <div className="cart-total-details">
+            <div className="cart-total-detail">
               <p>Total</p>
-              <p>{getTotalCartAmount()===0?0:getTotalCartAmount()+2}</p>
+              <p>${getTotalCartAmount()===0?0:getTotalCartAmount()+2}</p>
             </div>
           </div>
-          <button type='submit'  >PROCEED TO ORDER</button>
+          <button type='submit'>PROCEED TO ORDER</button>
         </div>
       </div>
     </form>

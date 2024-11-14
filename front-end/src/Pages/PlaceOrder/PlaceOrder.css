@@ -35,3 +35,19 @@
 .place-order .cart-total button{
     margin-top: 30px;
 }
+@media (max-width: 1050px) {
+    .place-order{
+        margin-top: 80px;
+    }
+}
+
+@media (max-width: 750px) {
+    .place-order{
+        display: flex;
+        flex-direction: column;
+        margin-top: 50px;
+    }
+    .place-order .cart-total{
+        padding-left: 0px;
+    }
+}

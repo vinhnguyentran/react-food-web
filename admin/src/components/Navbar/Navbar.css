@@ -2,12 +2,14 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 8px, 4%;
-    background-color: tomato;
+    padding: 12px 4%;
+    background-color: rgb(37, 209, 252);
+
 }
 
 .navbar .logo{
-    width: max(10%,80px);
+    width: max(7%,80px);
+    border-radius: 50%;
 }
 
 .navbar .profile{

@@ -40,7 +40,9 @@
 }
 
 @media (max-width: 1050px) {
-   
+    .header{
+        margin: 20px auto;
+    }
     .header-content{
         max-width: 45%;
     }
