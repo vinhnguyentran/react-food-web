@@ -5,10 +5,10 @@ const Header = () => {
     <div className='header'>
         <div className='header-content'>
             <h2>
-                Order your favourite food here
+                Chào mừng bạn đến với VNT Lab
             </h2>
-            <p>Choose from a diverse menu</p>
-            <button>View Menu</button>
+            <p>Chúng tôi cung cấp các dịch vụ liên quan đến website, app và các công nghệ khác</p>
+            <button>Xem thêm</button>
         </div>
     </div>
   )
